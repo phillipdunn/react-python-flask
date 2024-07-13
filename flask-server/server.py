@@ -1,5 +1,6 @@
 import requests
 from flask import Flask
+from reports import get_report
 
 app = Flask(__name__)
 
@@ -16,14 +17,15 @@ def api():
             for item in ow_data:
                  # create new item TODO calculate cost
                     new_item = {   
-                        'messageId': item['id'],
-                        'timeStamp': item['timestamp'],
-                        'cost':5
+                        'message_id': item['id'],
+                        'timestamp': item['timestamp'],
+                        'credits_used':5
                         }
                     if 'report_id' in item:
-                     # if item has report_id, add it to new item TODO get cost
-                        new_item['reportName'] = item['report_id']
-                        new_item['cost'] = 10            
+                     # if item has report_id, add it to new item and get credits used from endpoint
+                        cost = get_report(item['report_id'])
+                        new_item['report_name'] = item['report_id']
+                        new_item['credits_used'] = cost           
                     new_data_for_client['usage'].append(new_item) 
             return new_data_for_client
         
