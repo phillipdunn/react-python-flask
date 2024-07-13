@@ -1,4 +1,4 @@
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Button, Skeleton, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import EnhancedTable from './components/Table/Table';
 import { BarChart } from '@mui/x-charts';
@@ -34,17 +34,23 @@ function App() {
           <Button variant='outlined' onClick={() => copyToClipboard(window.location.href, notify)}>Share Dashboard</Button></Box>
       </Box>
       <ToastContainer />
-      <Box sx={{ py: 3 }}>
-        <BarChart
-          xAxis={[{ scaleType: 'band', dataKey: 'timestamp' }]}
-          series={[{ label: 'Credit usage', dataKey: 'creditsUsed' }]}
-          dataset={dataCleaner(data)}
-          width={1800}
-          height={500}
-          grid={{ horizontal: true }}
-          borderRadius={8} />
-      </Box>
-      <EnhancedTable rows={data} />
+      {data.length === 0 ?
+        <>
+          <Skeleton variant="rectangular" width={1800} height={500} />
+          <Skeleton variant="rectangular" width={1800} height={400} sx={{ mt: 4 }} />
+        </> : <>
+          <Box sx={{ py: 3 }}>
+            <BarChart
+              xAxis={[{ scaleType: 'band', dataKey: 'timestamp' }]}
+              series={[{ label: 'Credit usage', dataKey: 'creditsUsed' }]}
+              dataset={dataCleaner(data)}
+              width={1800}
+              height={500}
+              grid={{ horizontal: true }}
+              borderRadius={8} />
+          </Box>
+          <EnhancedTable rows={data} /></>
+      }
     </Box>
   );
 }
