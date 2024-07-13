@@ -27,8 +27,8 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 In the flask-server directory, you can run the following commands:
 
-`source venv/bin/activate` -> to activate environment
-`pip3 install Flask` -> to install flask
-`python3 server.py` -> to run the server
+- `source venv/bin/activate` -> to activate environment
+- `pip3 install Flask` -> to install flask
+- `python3 server.py` -> to run the server
 
 It will be running on [http://localhost:5000]
