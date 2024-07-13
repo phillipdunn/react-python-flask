@@ -8,7 +8,6 @@ function App() {
     fetch('/api')
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setData(data)
       });
   }, []);
