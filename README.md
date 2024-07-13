@@ -1,11 +1,20 @@
 # This project is build with React, Typescript, Python, Flask
 
+I used the Material UI and Flask as they both enable quick development, Typescript probably doesnt help with speed but is a better way to build imo. 
+
+Concessions I made:
+
+ I ran out of time trying to figure out handling null data (this is my firstime writing python), this also blocked me from being able to complete the fallback requirment for no report being available, both in python, so I moved on to the frontend.
+
+ I would of made more components, nav bar, maybe another page, some authetication even? I would of also written more test, currently only has one unit test for the table.
+  
 ## Front end
 
 Libraries used in the Front end include:
 
 - material ui
 - react-toastify
+- react-test-render
 - make-ts-component (my own npm package)
 
 In the client directory, you can run:
