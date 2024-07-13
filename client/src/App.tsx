@@ -1,9 +1,10 @@
-import { Box, Typography } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import EnhancedTable from './components/Table/Table';
 import { BarChart } from '@mui/x-charts';
-import { dataCleaner } from './helpers';
-
+import { copyToClipboard, dataCleaner } from './helpers';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 export interface Data {
   message_id: number;
   timestamp: string;
@@ -21,20 +22,27 @@ function App() {
       });
   }, []);
 
+  const notify = () => toast("Link to dashboard copied to clipboard");
+
   console.log(data);
   return (
     < Box sx={{ m: 3 }}>
-      <Typography variant="h4" sx={{ pb: 3, }}>Credit Usage Dashboard
-      </Typography>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+        <Typography variant="h4" sx={{ pb: 3, }}>Credit Usage Dashboard
+        </Typography>
+        <Box>
+          <Button variant='outlined' onClick={() => copyToClipboard(window.location.href, notify)}>Share Dashboard</Button></Box>
+      </Box>
+      <ToastContainer />
       <Box sx={{ py: 3 }}>
         <BarChart
           xAxis={[{ scaleType: 'band', dataKey: 'timestamp' }]}
           series={[{ label: 'Credit usage', dataKey: 'creditsUsed' }]}
           dataset={dataCleaner(data)}
           width={1800}
-          height={400}
+          height={500}
           grid={{ horizontal: true }}
-          borderRadius={10} />
+          borderRadius={8} />
       </Box>
       <EnhancedTable rows={data} />
     </Box>

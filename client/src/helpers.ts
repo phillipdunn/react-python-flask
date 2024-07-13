@@ -1,3 +1,5 @@
+import { Id } from 'react-toastify';
+
 export const timeStamp = (timeString: string) => {
   const date = new Date(timeString);
   const formattedDate = `${date.getDate().toString().padStart(2, '0')}-${(date.getMonth() + 1)
@@ -8,6 +10,7 @@ export const timeStamp = (timeString: string) => {
     .padStart(2, '0')}`;
   return formattedDate;
 };
+
 export const dataCleaner = (data: any[]) => {
   const cleanedData = data.map((item) => {
     const { timestamp: timeString, credits_used: creditsUsed } = item;
@@ -16,4 +19,9 @@ export const dataCleaner = (data: any[]) => {
     return { timestamp, creditsUsed };
   });
   return cleanedData;
+};
+
+export const copyToClipboard = (text: string, notify: () => Id) => {
+  navigator.clipboard.writeText(text);
+  notify();
 };
