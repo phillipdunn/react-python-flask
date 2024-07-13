@@ -8,3 +8,12 @@ export const timeStamp = (timeString: string) => {
     .padStart(2, '0')}`;
   return formattedDate;
 };
+export const dataCleaner = (data: any[]) => {
+  const cleanedData = data.map((item) => {
+    const { timestamp: timeString, credits_used: creditsUsed } = item;
+
+    const timestamp = timeStamp(timeString);
+    return { timestamp, creditsUsed };
+  });
+  return cleanedData;
+};
