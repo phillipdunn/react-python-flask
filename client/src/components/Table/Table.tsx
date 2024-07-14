@@ -19,7 +19,8 @@ import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
 import { ChangeEvent, MouseEvent, useMemo, useState } from 'react';
 import { timeStamp } from '../../helpers';
-import { Data } from '../../App';
+import { useSearchParams } from "react-router-dom";
+import { Data } from '../DashBoard/DashBoard';
 
 function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
   if (b[orderBy] < a[orderBy]) {
@@ -204,6 +205,7 @@ export default function EnhancedTable({ rows }: { rows: Data[] | [] }) {
   const [selected, setSelected] = useState<readonly number[]>([]);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const handleRequestSort = (
     event: MouseEvent<unknown>,
@@ -212,6 +214,7 @@ export default function EnhancedTable({ rows }: { rows: Data[] | [] }) {
     const isAsc = orderBy === property && order === 'asc';
     setOrder(isAsc ? 'desc' : 'asc');
     setOrderBy(property);
+    setSearchParams(() => ({ sort: property, order: isAsc ? 'desc' : 'asc' }));
   };
 
   const handleSelectAllClick = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -265,6 +268,13 @@ export default function EnhancedTable({ rows }: { rows: Data[] | [] }) {
       ),
     [order, orderBy, page, rows, rowsPerPage],
   );
+
+  useState(() => {
+    if (searchParams.get('sort') && searchParams.get('order')) {
+      setOrder(searchParams.get('order') as Order);
+      setOrderBy(searchParams.get('sort') as keyof Data);
+    }
+  },);
 
   return (
     <Box sx={{ width: '100%' }}>
