@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DashBoard/> component renders component: Initial 1`] = `
+<div
+  className="MuiBox-root css-yuob64"
+>
+  <div
+    className="MuiBox-root css-gg4vpm"
+  >
+    <h4
+      className="MuiTypography-root MuiTypography-h4 css-tjvwm3-MuiTypography-root"
+    >
+      Credit Usage Dashboard
+    </h4>
+    <div
+      className="MuiBox-root css-0"
+    >
+      <button
+        className="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary css-1rwt2y5-MuiButtonBase-root-MuiButton-root"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        Share Dashboard
+        <span
+          className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        />
+      </button>
+    </div>
+  </div>
+  <div
+    className="Toastify"
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  />
+  <span
+    className="MuiSkeleton-root MuiSkeleton-rectangular MuiSkeleton-pulse css-153n0d3-MuiSkeleton-root"
+    style={
+      Object {
+        "height": 500,
+        "width": 1800,
+      }
+    }
+  />
+  <span
+    className="MuiSkeleton-root MuiSkeleton-rectangular MuiSkeleton-pulse css-gepztz-MuiSkeleton-root"
+    style={
+      Object {
+        "height": 400,
+        "width": 1800,
+      }
+    }
+  />
+</div>
+`;
