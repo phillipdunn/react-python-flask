@@ -18,7 +18,7 @@ interface Props { }
 const DashBoard: FC<Props> = () => {
   const [data, setData] = useState<Data[]>([]);
   useEffect(() => {
-    fetch('/api')
+    fetch('/usage')
       .then((res) => res.json())
       .then((data) => {
         setData(data.usage)

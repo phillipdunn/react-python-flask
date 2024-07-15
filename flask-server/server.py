@@ -5,7 +5,7 @@ from helpers import calculate_cost
 
 app = Flask(__name__)
 
-@app.route('/api', methods=['GET'])
+@app.route('/usage', methods=['GET'])
 def api():
     try:
         res = requests.get('https://owpublic.blob.core.windows.net/tech-task/messages/current-period')
